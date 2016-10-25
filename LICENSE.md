@@ -1,2 +1,3 @@
 
-Copyright (C) 2016 mathgomes
+Copyright (C) 2016
+
