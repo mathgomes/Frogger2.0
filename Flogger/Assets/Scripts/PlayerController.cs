@@ -12,6 +12,13 @@ public class PlayerController : MonoBehaviour {
 	static Vector3 esquerda = new Vector3 (0, 0, -90);
 	static Vector3 direita = new Vector3 (0, 0, 90);
 
+	private Rigidbody2D rb;
+	private Vector2 move = Vector2.zero;
+
+	void Start () {
+		rb = GetComponent<Rigidbody2D> ();
+	}
+
     // Update is called once per frame
     void Update () {
 		var deltaX = 0;
@@ -30,10 +37,22 @@ public class PlayerController : MonoBehaviour {
 			transform.eulerAngles = direita;
 		}
 
+
+		move.x += deltaX;
+		move.y += deltaY;
+	}
+
+	void FixedUpdate () {	
 		// Não translada se for sair da tela
 		var cam = Camera.main;
-		if (cam.pixelRect.Contains (cam.WorldToScreenPoint (transform.position + new Vector3 (deltaX, deltaY)))) {
-			transform.Translate (deltaX, deltaY, 0, Space.World);
+		if (cam.pixelRect.Contains (cam.WorldToScreenPoint (rb.position + move))) {
+			rb.MovePosition (rb.position + move);
+			//transform.Translate (deltaX, deltaY, 0, Space.World);
 		}
+		move = Vector2.zero;
     }
+
+	void OnCollisionEnter2D (Collision2D outro) {
+		Debug.Log ("Bateu ");
+	}
 }
