@@ -1,9 +1,44 @@
 fileFormatVersion: 2
 guid: cd9613d2f58fe2745b045b438edfbb4c
-timeCreated: 1480361209
+timeCreated: 1480387317
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_0
+    21300002: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_1
+    21300004: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_2
+    21300006: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_3
+    21300008: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_4
+    21300010: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_5
+    21300012: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_6
+    21300014: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_7
+    21300016: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_8
+    21300018: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_9
+    21300020: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_10
+    21300022: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_11
+    21300024: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_12
+    21300026: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_13
+    21300028: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_14
+    21300030: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_15
+    21300032: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_16
+    21300034: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_17
+    21300036: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_18
+    21300038: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_19
+    21300040: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_20
+    21300042: bg1
+    21300044: river
+    21300046: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_23
+    21300048: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_24
+    21300050: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_25
+    21300052: wood1
+    21300054: wood2
+    21300056: wood3
+    21300058: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_29
+    21300060: truck1
+    21300062: truck2
+    21300064: car1
+    21300066: car2
+    21300068: car3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -30,11 +65,11 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +93,472 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 532
+        width: 52
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 528
+        width: 58
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_2
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 528
+        width: 60
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_3
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 526
+        width: 56
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_4
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 524
+        width: 55
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_5
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 528
+        width: 57
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_6
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 532
+        width: 52
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_7
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 532
+        width: 73
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_8
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 528
+        width: 72
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_9
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 451
+        width: 71
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_10
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 448
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_11
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 451
+        width: 70
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_12
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 455
+        width: 72
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_13
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 455
+        width: 72
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_14
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 458
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_15
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 484
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_16
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 463
+        width: 46
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_17
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 470
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_18
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 476
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_19
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 372
+        width: 64
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_20
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 380
+        width: 44
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bg1
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 360
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: river
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 360
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_23
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 360
+        width: 82
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_24
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 360
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_25
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 360
+        width: 83
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wood1
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 283
+        width: 356
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wood2
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 283
+        width: 185
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wood3
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 212
+        width: 274
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_29
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 216
+        width: 66
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: truck1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 127
+        width: 180
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: truck2
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 128
+        width: 285
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: car1
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 50
+        width: 128
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: car2
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 44
+        width: 137
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: car3
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 47
+        width: 136
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
