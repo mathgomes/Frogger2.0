@@ -5,29 +5,35 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	const int ladoQuadrado = 1;
-    const int initY = -4;
 
-    void Start() {
+	// Rotações padrão pra cada lado, pra não ter que criar sempre
+	static Vector3 cima = new Vector3 (0, 0, 180);
+	static Vector3 baixo = new Vector3 (0, 0, 0);
+	static Vector3 esquerda = new Vector3 (0, 0, -90);
+	static Vector3 direita = new Vector3 (0, 0, 90);
 
-        transform.Translate(0,initY, 0);
-
-    }
     // Update is called once per frame
     void Update () {
-		var h = 0f;
-		var v = 0f;
-		if (Input.GetKeyDown (KeyCode.UpArrow)) v += 1;
-		if (Input.GetKeyDown (KeyCode.DownArrow)) v -= 1;
-		if (Input.GetKeyDown (KeyCode.LeftArrow)) h -= 1;
-		if (Input.GetKeyDown (KeyCode.RightArrow)) h += 1;
+		var deltaX = 0;
+		var deltaY = 0;
+		if (Input.GetKeyDown (KeyCode.UpArrow)) {
+			deltaY = ladoQuadrado;
+			transform.eulerAngles = cima;
+		} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+			deltaY = -ladoQuadrado;
+			transform.eulerAngles = baixo;
+		} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+			deltaX = -ladoQuadrado;
+			transform.eulerAngles = esquerda;
+		} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
+			deltaX = ladoQuadrado;
+			transform.eulerAngles = direita;
+		}
 
-
-		transform.Translate (h * ladoQuadrado, v * ladoQuadrado, 0);
-
-        // frog não sai da tela
-        var pos = Camera.main.WorldToViewportPoint(transform.position);
-        pos.x = Mathf.Clamp01(pos.x);
-        pos.y = Mathf.Clamp01(pos.y);
-        transform.position = Camera.main.ViewportToWorldPoint(pos);
+		// Não translada se for sair da tela
+		var cam = Camera.main;
+		if (cam.pixelRect.Contains (cam.WorldToScreenPoint (transform.position + new Vector3 (deltaX, deltaY)))) {
+			transform.Translate (deltaX, deltaY, 0, Space.World);
+		}
     }
 }
