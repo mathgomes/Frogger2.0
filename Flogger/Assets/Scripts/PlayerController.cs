@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-
 	const int ladoQuadrado = 1;
 
+	// Velocidade do sapo, em unidades por segundo
 	public float velocidade = 2;
 
 	// Rotações padrão pra cada lado, pra não ter que criar sempre
@@ -14,12 +14,19 @@ public class PlayerController : MonoBehaviour {
 	static Vector3 esquerda = new Vector3 (0, 0, -90);
 	static Vector3 direita = new Vector3 (0, 0, 90);
 
+	// Variáveis do movimento
 	private Rigidbody2D rb;
 	private Vector2 move = Vector2.zero;
 	private Vector2 delta;
 
+	// Começo da fase, pra voltar ao morrer
+	// Note que em qualquer lugar que ele Startar vira começo da fase,
+	// rolando usar em prefab
+	private Vector2 comecoDaFase;
+
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
+		comecoDaFase = rb.position;
 	}
 
     // Update is called once per frame
@@ -57,10 +64,12 @@ public class PlayerController : MonoBehaviour {
 			rb.MovePosition (rb.position + delta);
 			move -= delta;
 		}
-		//move = Vector2.zero;
     }
 
 	void OnCollisionEnter2D (Collision2D outro) {
-		Debug.Log ("Bateu ");
+		print ("bateu");
+		// volta pro começo da fase, perdendo uma vida
+		transform.position = comecoDaFase;
+		move = Vector2.zero;
 	}
 }
