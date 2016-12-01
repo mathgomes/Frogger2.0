@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour {
 	// Velocidade do veículo, em unidades por segundo (use valores negativos pra ir pa esquerda)
 	public float velocidade = 1;
 
-    void Update() { 
+    void Update() {
         transform.Translate (velocidade * Time.deltaTime, 0, 0);
     }
 }

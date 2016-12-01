@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
 
 	const int ladoQuadrado = 1;
 
+	public float velocidade = 2;
+
 	// Rotações padrão pra cada lado, pra não ter que criar sempre
 	static Vector3 cima = new Vector3 (0, 0, 180);
 	static Vector3 baixo = new Vector3 (0, 0, 0);
@@ -14,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private Vector2 move = Vector2.zero;
+	private Vector2 delta;
 
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -21,35 +24,40 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		var deltaX = 0;
-		var deltaY = 0;
-		if (Input.GetKeyDown (KeyCode.UpArrow)) {
-			deltaY = ladoQuadrado;
-			transform.eulerAngles = cima;
-		} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
-			deltaY = -ladoQuadrado;
-			transform.eulerAngles = baixo;
-		} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
-			deltaX = -ladoQuadrado;
-			transform.eulerAngles = esquerda;
-		} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
-			deltaX = ladoQuadrado;
-			transform.eulerAngles = direita;
+		if (move == Vector2.zero) {
+			var deltaX = 0;
+			var deltaY = 0;
+			if (Input.GetKeyDown (KeyCode.UpArrow)) {
+				deltaY = ladoQuadrado;
+				transform.eulerAngles = cima;
+			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+				deltaY = -ladoQuadrado;
+				transform.eulerAngles = baixo;
+			} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+				deltaX = -ladoQuadrado;
+				transform.eulerAngles = esquerda;
+			} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
+				deltaX = ladoQuadrado;
+				transform.eulerAngles = direita;
+			}
+
+			move.x += deltaX;
+			move.y += deltaY;
+			delta = move * velocidade * Time.fixedDeltaTime;
+			if (move != Vector2.zero) {
+				GetComponent<Animator> ().SetTrigger ("Pulou");
+			}
 		}
-
-
-		move.x += deltaX;
-		move.y += deltaY;
 	}
 
 	void FixedUpdate () {	
 		// Não translada se for sair da tela
 		var cam = Camera.main;
 		if (cam.pixelRect.Contains (cam.WorldToScreenPoint (rb.position + move))) {
-			rb.MovePosition (rb.position + move);
-			//transform.Translate (deltaX, deltaY, 0, Space.World);
+			rb.MovePosition (rb.position + delta);
+			move -= delta;
 		}
-		move = Vector2.zero;
+		//move = Vector2.zero;
     }
 
 	void OnCollisionEnter2D (Collision2D outro) {
