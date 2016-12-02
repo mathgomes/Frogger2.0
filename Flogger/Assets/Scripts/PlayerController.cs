@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 	// Variáveis do movimento
 	private Rigidbody2D rb;
 	private Vector2 move = Vector2.zero;
-	private Vector2 delta;
+	private Vector2 delta = Vector2.zero;
 	private Vector2 segue = Vector2.zero; // Vetor seguindo uma tartaruga ou tronco
 
 	// Começo da fase, pra voltar ao morrer
@@ -72,11 +72,11 @@ public class PlayerController : MonoBehaviour {
 	/// Volta pro começo da fase, perdendo uma vida
 	private void Morre () {
 		transform.position = comecoDaFase;
-		move = Vector2.zero;
+		move = segue = Vector2.zero;
 	}
 
 	void OnCollisionEnter2D (Collision2D outro) {
-		print ("bateu");
+		print ("bateu em " + outro.gameObject.name);
 		if (outro.gameObject.CompareTag ("Inimigo")) {
 			Morre ();
 		}

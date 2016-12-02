@@ -11,6 +11,13 @@ public class Movement : MonoBehaviour {
 	// Note que tanto faz se indo pra direita ou esquerda, essa borda DEVE ser positiva
 	public float xBorda = 10;
 
+	// Ao começar, inverte o sprite se for pra esquerda
+	void Start () {
+		if (velocidade < 0) {
+			GetComponent<SpriteRenderer> ().flipX = true;
+		}
+	}
+
     void Update() {
 		float sinal = Mathf.Sign (velocidade);
 		if (sinal * transform.position.x > xBorda) {
