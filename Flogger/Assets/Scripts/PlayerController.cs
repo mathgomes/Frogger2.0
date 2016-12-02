@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Vector2 move = Vector2.zero;
 	private Vector2 delta;
+	private Vector2 segue = Vector2.zero; // Vetor seguindo uma tartaruga ou tronco
 
 	// Começo da fase, pra voltar ao morrer
 	// Note que em qualquer lugar que ele Startar vira começo da fase,
@@ -61,15 +62,30 @@ public class PlayerController : MonoBehaviour {
 		// Não translada se for sair da tela
 		var cam = Camera.main;
 		if (cam.pixelRect.Contains (cam.WorldToScreenPoint (rb.position + move))) {
-			rb.MovePosition (rb.position + delta);
+			rb.MovePosition (rb.position + delta + segue);
 			move -= delta;
+		} else {
+			Morre ();
 		}
     }
 
-	void OnCollisionEnter2D (Collision2D outro) {
-		print ("bateu");
-		// volta pro começo da fase, perdendo uma vida
+	/// Volta pro começo da fase, perdendo uma vida
+	private void Morre () {
 		transform.position = comecoDaFase;
 		move = Vector2.zero;
+	}
+
+	void OnCollisionEnter2D (Collision2D outro) {
+		print ("bateu");
+		if (outro.gameObject.CompareTag ("Inimigo")) {
+			Morre ();
+		}
+	}
+
+	void OnTriggerEnter2D (Collider2D outro) {
+		segue = new Vector2 (outro.GetComponent<Movement> ().velocidade * Time.fixedDeltaTime, 0);
+	}
+	void OnTriggerExit2D (Collider2D outro) {
+		segue = Vector2.zero;
 	}
 }
