@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour {
 	private void Morre () {
 		transform.position = comecoDaFase;
 		move = segue = Vector2.zero;
+		GetComponent<AudioSource> ().Play ();
 	}
 
 	void OnCollisionEnter2D (Collision2D outro) {
