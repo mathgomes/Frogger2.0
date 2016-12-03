@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour {
 	// rolando usar em prefab
 	private Vector2 comecoDaFase;
 
+	public GameObject video;
+
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		comecoDaFase = rb.position;
@@ -74,6 +76,7 @@ public class PlayerController : MonoBehaviour {
 		transform.position = comecoDaFase;
 		move = segue = Vector2.zero;
 		GetComponent<AudioSource> ().Play ();
+		video.GetComponent<VideoController> ().pedeSom ("morte");
 	}
 
 	void OnCollisionEnter2D (Collision2D outro) {
