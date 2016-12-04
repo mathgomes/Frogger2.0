@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cd9613d2f58fe2745b045b438edfbb4c
-timeCreated: 1480812307
+timeCreated: 1480813270
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -251,8 +251,8 @@ TextureImporter:
         serializedVersion: 2
         x: 403
         y: 532
-        width: 73
-        height: 57
+        width: 70
+        height: 60
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,8 +264,8 @@ TextureImporter:
         serializedVersion: 2
         x: 480
         y: 528
-        width: 72
-        height: 64
+        width: 70
+        height: 60
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,8 +277,8 @@ TextureImporter:
         serializedVersion: 2
         x: 7
         y: 451
-        width: 71
-        height: 66
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,7 +290,7 @@ TextureImporter:
         serializedVersion: 2
         x: 80
         y: 448
-        width: 72
+        width: 70
         height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -304,7 +304,7 @@ TextureImporter:
         x: 154
         y: 451
         width: 70
-        height: 65
+        height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,8 +316,8 @@ TextureImporter:
         serializedVersion: 2
         x: 228
         y: 455
-        width: 72
-        height: 57
+        width: 70
+        height: 60
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -329,8 +329,8 @@ TextureImporter:
         serializedVersion: 2
         x: 300
         y: 455
-        width: 72
-        height: 57
+        width: 70
+        height: 60
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,7 +342,7 @@ TextureImporter:
         serializedVersion: 2
         x: 376
         y: 458
-        width: 66
+        width: 70
         height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -368,8 +368,8 @@ TextureImporter:
         serializedVersion: 2
         x: 458
         y: 463
-        width: 46
-        height: 39
+        width: 50
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,8 +381,8 @@ TextureImporter:
         serializedVersion: 2
         x: 517
         y: 470
-        width: 36
-        height: 28
+        width: 40
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,7 +394,7 @@ TextureImporter:
         serializedVersion: 2
         x: 568
         y: 476
-        width: 28
+        width: 30
         height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -407,8 +407,8 @@ TextureImporter:
         serializedVersion: 2
         x: 4
         y: 372
-        width: 75
-        height: 75
+        width: 70
+        height: 60
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -434,7 +434,7 @@ TextureImporter:
         x: 135
         y: 360
         width: 80
-        height: 100
+        height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,8 +446,8 @@ TextureImporter:
         serializedVersion: 2
         x: 224
         y: 360
-        width: 100
-        height: 100
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -473,7 +473,7 @@ TextureImporter:
         x: 407
         y: 360
         width: 80
-        height: 100
+        height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -483,10 +483,10 @@ TextureImporter:
       name: tutorial_sprites_frogger_with_unity_playmaker_spri_by_herrrattentod-d9lohxi_25
       rect:
         serializedVersion: 2
-        x: 496
-        y: 360
+        x: 494
+        y: 358
         width: 80
-        height: 100
+        height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
