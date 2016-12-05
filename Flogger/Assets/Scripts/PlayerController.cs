@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Vector2 anterior;
 	private Vector2 indoPara;
-	private Vector2 segue = Vector2.zero; // Vetor seguindo uma tartaruga ou tronco
+	private Vector2 segue; // Vetor seguindo uma tartaruga ou tronco
 	private float tempoPulou;
 
 	// Começo da fase, pra voltar ao morrer
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
+		segue = Vector2.zero;
 		comecoDaFase = anterior = indoPara = rb.position;
 	}
 
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour {
 			}
 				
 			if (deltaX != 0 || deltaY != 0) {
-				indoPara += new Vector2 (deltaX, deltaY);
+				indoPara = anterior + new Vector2 (deltaX, deltaY);
 				tempoPulou = Time.time;
 				GetComponent<Animator> ().SetTrigger ("Pulou");
 			}
@@ -65,10 +66,12 @@ public class PlayerController : MonoBehaviour {
 		if (cam.pixelRect.Contains (cam.WorldToScreenPoint (rb.position))) {
 			// fração de movimento, se passar de 1 é porque cabou
 			var frac = (Time.time - tempoPulou) * velocidade;
-			if (frac > 1) {
-				anterior = indoPara;
+			if (frac < 1) {
+				rb.MovePosition (Vector2.Lerp (anterior, indoPara, frac));
 			} else {
-				rb.MovePosition (Vector3.Lerp (anterior, indoPara, frac));
+				indoPara += segue;
+				anterior = indoPara;
+				rb.MovePosition (anterior);
 			}
 		// saiu da tela: morre, VWAHAHAHAHA!
 		} else {
@@ -85,12 +88,12 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D outro) {
 		if (outro.gameObject.CompareTag ("SobreRio")) {
-			segue = new Vector2 (outro.GetComponent<Movement> ().velocidade * Time.fixedDeltaTime, 0);
+			segue = new Vector2 (outro.GetComponent<Movement> ().velocidade * Time.fixedDeltaTime, 0f);
 		}
 	}
 
 	void OnTriggerStay2D (Collider2D outro) {
-		// Morre se encostou em inimigo e NÃO tá seguindo tronco/tartaruga
+		// Morre se encostou em inimigo e NÃO tá seguindo tronco/tartaruga (pro rio)
 		if (outro.gameObject.CompareTag ("Inimigo") && segue == Vector2.zero) {
 			print ("bateu em " + outro.gameObject.name);
 			Morre ();
