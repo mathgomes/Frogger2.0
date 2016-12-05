@@ -5,8 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 	const int ladoQuadrado = 1;
 
+	// Vidas
+	public int vidas;
+
 	// Velocidade do sapo, em unidades por segundo
 	public float velocidade = 2;
+	public float velocidadeDelta = 0.5f;
 
 	// Rotações padrão pra cada lado, pra não ter que criar sempre
 	static Vector3 cima = new Vector3 (0, 0, 180);
@@ -16,9 +20,10 @@ public class PlayerController : MonoBehaviour {
 
 	// Variáveis do movimento
 	private Rigidbody2D rb;
-	private Vector2 move = Vector2.zero;
-	private Vector2 delta = Vector2.zero;
-	private Vector2 segue = Vector2.zero; // Vetor seguindo uma tartaruga ou tronco
+	private Vector2 anterior;
+	private Vector2 indoPara;
+	private Vector2 segue; // Vetor seguindo uma tartaruga ou tronco
+	private float tempoPulou;
 
 	// Começo da fase, pra voltar ao morrer
 	// Note que em qualquer lugar que ele Startar vira começo da fase,
@@ -29,12 +34,13 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-		comecoDaFase = rb.position;
+		segue = Vector2.zero;
+		comecoDaFase = anterior = indoPara = rb.position;
 	}
 
     // Update is called once per frame
     void Update () {
-		if (move == Vector2.zero) {
+		if (anterior == indoPara) {
 			var deltaX = 0;
 			var deltaY = 0;
 			if (Input.GetKeyDown (KeyCode.UpArrow)) {
@@ -50,22 +56,28 @@ public class PlayerController : MonoBehaviour {
 				deltaX = ladoQuadrado;
 				transform.eulerAngles = direita;
 			}
-
-			move.x += deltaX;
-			move.y += deltaY;
-			delta = move * velocidade * Time.fixedDeltaTime;
-			if (move != Vector2.zero) {
+				
+			if (deltaX != 0 || deltaY != 0) {
+				indoPara = anterior + new Vector2 (deltaX, deltaY);
+				tempoPulou = Time.time;
 				GetComponent<Animator> ().SetTrigger ("Pulou");
 			}
 		}
 	}
 
-	void FixedUpdate () {	
-		// Não translada se for sair da tela
+	void FixedUpdate () {
 		var cam = Camera.main;
-		if (cam.pixelRect.Contains (cam.WorldToScreenPoint (rb.position + move))) {
-			rb.MovePosition (rb.position + delta + segue);
-			move -= delta;
+		if (cam.pixelRect.Contains (cam.WorldToScreenPoint (rb.position))) {
+			// fração de movimento, se passar de 1 é porque cabou
+			var frac = (Time.time - tempoPulou) * velocidade;
+			if (frac < 1) {
+				rb.MovePosition (Vector2.Lerp (anterior, indoPara, frac));
+			} else {
+				indoPara += segue;
+				anterior = indoPara;
+				rb.MovePosition (anterior);
+			}
+		// saiu da tela: morre, VWAHAHAHAHA!
 		} else {
 			Morre ();
 		}
@@ -73,23 +85,35 @@ public class PlayerController : MonoBehaviour {
 
 	/// Volta pro começo da fase, perdendo uma vida
 	private void Morre () {
-		transform.position = comecoDaFase;
-		move = segue = Vector2.zero;
+		transform.position = anterior = indoPara = comecoDaFase;
 		GetComponent<AudioSource> ().Play ();
 		video.GetComponent<VideoController> ().pedeSom ("morte");
-	}
-
-	void OnCollisionEnter2D (Collision2D outro) {
-		print ("bateu em " + outro.gameObject.name);
-		if (outro.gameObject.CompareTag ("Inimigo")) {
-			Morre ();
+		vidas--;
+		if (vidas < 0) {
+			print ("CABOOOOOU");
 		}
 	}
 
 	void OnTriggerEnter2D (Collider2D outro) {
-		segue = new Vector2 (outro.GetComponent<Movement> ().velocidade * Time.fixedDeltaTime, 0);
+		if (outro.gameObject.CompareTag ("SobreRio")) {
+			segue = new Vector2 (outro.GetComponent<Movement> ().velocidade * Time.fixedDeltaTime, 0f);
+		} else if (outro.gameObject.CompareTag ("PowerUp")) {
+			outro.GetComponent<IPowerUp> ().run (this);
+			Destroy (outro.gameObject);
+		}
 	}
+
+	void OnTriggerStay2D (Collider2D outro) {
+		// Morre se encostou em inimigo e NÃO tá seguindo tronco/tartaruga (pro rio)
+		if (outro.gameObject.CompareTag ("Inimigo") && segue == Vector2.zero) {
+			print ("bateu em " + outro.gameObject.name);
+			Morre ();
+		}
+	}
+
 	void OnTriggerExit2D (Collider2D outro) {
-		segue = Vector2.zero;
+		if (outro.gameObject.CompareTag ("SobreRio")) {
+			segue = Vector2.zero;
+		}
 	}
 }
