@@ -24,8 +24,4 @@ public class TimeManager : MonoBehaviour {
         text.text = string.Format("Tempo: {0:00} : {1:00}", minutes, seconds);
     }
 
-    private object floor(float v)
-    {
-        throw new NotImplementedException();
-    }
 }
