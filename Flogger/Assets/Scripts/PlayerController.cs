@@ -5,8 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 	const int ladoQuadrado = 1;
 
+	// Vidas
+	public int vidas;
+
 	// Velocidade do sapo, em unidades por segundo
 	public float velocidade = 2;
+	public float velocidadeDelta = 0.5f;
 
 	// Rotações padrão pra cada lado, pra não ter que criar sempre
 	static Vector3 cima = new Vector3 (0, 0, 180);
@@ -84,11 +88,18 @@ public class PlayerController : MonoBehaviour {
 		transform.position = anterior = indoPara = comecoDaFase;
 		GetComponent<AudioSource> ().Play ();
 		video.GetComponent<VideoController> ().pedeSom ("morte");
+		vidas--;
+		if (vidas < 0) {
+			print ("CABOOOOOU");
+		}
 	}
 
 	void OnTriggerEnter2D (Collider2D outro) {
 		if (outro.gameObject.CompareTag ("SobreRio")) {
 			segue = new Vector2 (outro.GetComponent<Movement> ().velocidade * Time.fixedDeltaTime, 0f);
+		} else if (outro.gameObject.CompareTag ("PowerUp")) {
+			outro.GetComponent<IPowerUp> ().run (this);
+			Destroy (outro.gameObject);
 		}
 	}
 
