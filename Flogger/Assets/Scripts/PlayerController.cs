@@ -30,7 +30,12 @@ public class PlayerController : MonoBehaviour {
 	// rolando usar em prefab
 	private Vector2 comecoDaFase;
 
+	// Video, pra pedir pra falar
 	public GameObject video;
+
+	// With Lasers!
+	public GameObject laserPrefab;
+	public int laser = 0;
 
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -62,6 +67,10 @@ public class PlayerController : MonoBehaviour {
 				tempoPulou = Time.time;
 				GetComponent<Animator> ().SetTrigger ("Pulou");
 			}
+		}
+		if (laser > 0 && Input.GetButtonDown ("Fire1")) {
+			Instantiate (laserPrefab, transform, false);
+			laser--;
 		}
 	}
 
