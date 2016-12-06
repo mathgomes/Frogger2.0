@@ -20,11 +20,14 @@ public class PlayerController : MonoBehaviour {
 	static Vector3 direita = new Vector3 (0, 0, 90);
 
 	// Variáveis do movimento
-	private Rigidbody2D rb;
+	public Rigidbody2D rb;
 	private Vector2 anterior;
 	private Vector2 indoPara;
 	private Vector2 segue; // Vetor seguindo uma tartaruga ou tronco
 	private float tempoPulou;
+
+	public bool inverte = false; // Inverte os controle, se pegar o powerdown
+	public float timer;
 
 	// Começo da fase, pra voltar ao morrer
 	// Note que em qualquer lugar que ele Startar vira começo da fase,
@@ -51,33 +54,53 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+		timer -= Time.deltaTime;
 		if (anterior == indoPara) {
 			var deltaX = 0;
 			var deltaY = 0;
+			Vector3 direcao = Vector3.zero;
 			if (Input.GetKeyDown (KeyCode.UpArrow)) {
 				deltaY = ladoQuadrado;
-				transform.eulerAngles = cima;
+				direcao = cima;
 			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
 				deltaY = -ladoQuadrado;
-				transform.eulerAngles = baixo;
+				direcao = baixo;
 			} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 				deltaX = -ladoQuadrado;
-				transform.eulerAngles = esquerda;
+				direcao = esquerda;
 			} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
 				deltaX = ladoQuadrado;
-				transform.eulerAngles = direita;
+				direcao = direita;
+			}
+			// Muda a direção, se moveu e não tá com controle invertido
+			if (!inverte && direcao != Vector3.zero) {
+				transform.eulerAngles = direcao;
 			}
 				
 			if (deltaX != 0 || deltaY != 0) {
-				indoPara = anterior + new Vector2 (deltaX, deltaY);
+				indoPara = anterior + (inverte ? -1 : 1) * new Vector2 (deltaX, deltaY);
 				tempoPulou = Time.time;
 				GetComponent<Animator> ().SetTrigger ("Pulou");
 			}
+		}
+		if (inverte && timer <= 0) {
+			DesinverteControles ();
 		}
 		if (laser > 0 && Input.GetButtonDown ("Fire1")) {
 			Instantiate (laserPrefab, transform, false);
 			laser--;
 		}
+	}
+
+	public void InverteControles (float duracao) {
+		inverte = true;
+		timer = duracao;
+		rb.freezeRotation = false;
+		rb.angularVelocity = 270;
+	}
+	void DesinverteControles () {
+		inverte = false;
+		rb.freezeRotation = true;
 	}
 
 	void FixedUpdate () {
