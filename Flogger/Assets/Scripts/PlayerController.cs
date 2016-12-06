@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour {
 		vidas--;
 		sobreRioAninhado = 0;
 		if (vidas <= 0) {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(5);
         }
 	}
 

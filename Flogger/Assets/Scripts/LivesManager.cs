@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class LivesManager : MonoBehaviour {
-    Text text;
-    GameObject player;
+    public Text text;
+    public GameObject player;
     
     // Use this for initialization
     void Start () {

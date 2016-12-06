@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour {
-    Text text;
+    public Text text;
     public float time;
 	// Use this for initialization
 	void Start () {
