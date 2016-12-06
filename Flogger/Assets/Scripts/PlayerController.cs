@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 	const int ladoQuadrado = 1;
@@ -104,8 +105,8 @@ public class PlayerController : MonoBehaviour {
 		video.GetComponent<VideoController> ().pedeSom ("morte");
 		vidas--;
 		if (vidas <= 0) {
-			print ("CABOOOOOU");
-		}
+            SceneManager.LoadScene(2);
+        }
 	}
 
 	void OnTriggerEnter2D (Collider2D outro) {
