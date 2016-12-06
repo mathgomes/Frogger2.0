@@ -59,21 +59,26 @@ public class PlayerController : MonoBehaviour {
 			var deltaX = 0;
 			var deltaY = 0;
 			Vector3 direcao = Vector3.zero;
+			var andou = false;
 			if (Input.GetKeyDown (KeyCode.UpArrow)) {
 				deltaY = ladoQuadrado;
 				direcao = cima;
+				andou = true;
 			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
 				deltaY = -ladoQuadrado;
 				direcao = baixo;
+				andou = true;
 			} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 				deltaX = -ladoQuadrado;
 				direcao = esquerda;
+				andou = true;
 			} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
 				deltaX = ladoQuadrado;
 				direcao = direita;
+				andou = true;
 			}
 			// Muda a direção, se moveu e não tá com controle invertido
-			if (!inverte && direcao != Vector3.zero) {
+			if (!inverte && andou) {
 				transform.eulerAngles = direcao;
 			}
 				
