@@ -23,8 +23,10 @@ public class PlayerController : MonoBehaviour {
 	public Rigidbody2D rb;
 	private Vector2 anterior;
 	private Vector2 indoPara;
-	private Vector2 segue; // Vetor seguindo uma tartaruga ou tronco
 	private float tempoPulou;
+	// Variável de SobreRio
+	private Vector2 segue; // Vetor seguindo uma tartaruga ou tronco
+	private uint sobreRioAninhado = 0;
 
 	public bool inverte = false; // Inverte os controle, se pegar o powerdown
 	public float timer;
@@ -132,6 +134,7 @@ public class PlayerController : MonoBehaviour {
 		GetComponent<AudioSource> ().Play ();
 		video.GetComponent<VideoController> ().pedeSom ("morte");
 		vidas--;
+		sobreRioAninhado = 0;
 		if (vidas <= 0) {
             SceneManager.LoadScene(2);
         }
@@ -140,23 +143,35 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D outro) {
 		if (outro.gameObject.CompareTag ("SobreRio")) {
 			segue = new Vector2 (outro.GetComponent<Movement> ().velocidade * Time.fixedDeltaTime, 0f);
+			sobreRioAninhado++;
 		} else if (outro.gameObject.CompareTag ("PowerUp")) {
 			outro.GetComponent<IPowerUp> ().run (this);
 			Destroy (outro.gameObject);
 		}
 	}
 
+	/// Sai do SobreRio (tartaruga/tronco). Só pra não ter código duplicado =P	
+	void SobreRioMaisNao () {
+		sobreRioAninhado--;
+		if (sobreRioAninhado == 0) {
+			segue = Vector2.zero;
+		}
+	}
 	void OnTriggerStay2D (Collider2D outro) {
 		// Morre se encostou em inimigo e NÃO tá seguindo tronco/tartaruga (pro rio)
-		if (outro.gameObject.CompareTag ("Inimigo") && segue == Vector2.zero) {
-			print ("bateu em " + outro.gameObject.name);
-			Morre ();
+		if (outro.gameObject.CompareTag ("Inimigo")) {
+			if (segue == Vector2.zero) {
+				print ("bateu em " + outro.gameObject.name);
+				Morre ();
+			} else if (outro.name == "Tartaruga") {
+				SobreRioMaisNao ();
+			}
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D outro) {
 		if (outro.gameObject.CompareTag ("SobreRio")) {
-			segue = Vector2.zero;
+			SobreRioMaisNao ();
 		}
 	}
 }

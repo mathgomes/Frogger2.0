@@ -30,13 +30,11 @@ public class TartarugaSubmerge : MonoBehaviour {
 			anim.SetTrigger ("Emerge");
 			tag = "SobreRio";
 			dendagua = false;
-			coll.isTrigger = true;
 			timer = 0;
 		} else if (!dendagua && timer > tempoFora) {
 			anim.SetTrigger ("Mergulha");
 			tag = "Inimigo";
 			dendagua = true;
-			coll.isTrigger = false;
 			timer = 0;
 		}
 	}
