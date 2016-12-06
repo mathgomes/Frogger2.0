@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 	const int ladoQuadrado = 1;
+	const int cenaGameOver = 5;
 
     // Vidas
     public int vidas;
@@ -147,6 +148,8 @@ public class PlayerController : MonoBehaviour {
 		} else if (outro.gameObject.CompareTag ("PowerUp")) {
 			outro.GetComponent<IPowerUp> ().run (this);
 			Destroy (outro.gameObject);
+		} else if (outro.gameObject.CompareTag ("FimDaFase")) {
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 		}
 	}
 
