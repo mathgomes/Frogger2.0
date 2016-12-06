@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 	const int ladoQuadrado = 1;
 
-	// Vidas
-	public int vidas;
+    // Vidas
+    public int vidas;
 
 	// Velocidade do sapo, em unidades por segundo
 	public float velocidade = 2;
@@ -37,11 +37,16 @@ public class PlayerController : MonoBehaviour {
 	public GameObject laserPrefab;
 	public int laser = 0;
 
+    public GameObject[] HUD = new GameObject[3];
+
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		segue = Vector2.zero;
 		comecoDaFase = anterior = indoPara = rb.position;
-	}
+        HUD[0] = GameObject.Find("Text");
+        HUD[1] = GameObject.Find("Clock");
+        HUD[2] = GameObject.Find("Score");
+    }
 
     // Update is called once per frame
     void Update () {
@@ -98,7 +103,7 @@ public class PlayerController : MonoBehaviour {
 		GetComponent<AudioSource> ().Play ();
 		video.GetComponent<VideoController> ().pedeSom ("morte");
 		vidas--;
-		if (vidas < 0) {
+		if (vidas <= 0) {
 			print ("CABOOOOOU");
 		}
 	}

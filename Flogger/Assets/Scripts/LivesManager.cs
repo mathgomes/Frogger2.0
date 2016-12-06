@@ -5,14 +5,17 @@ using UnityEngine.UI;
 
 public class LivesManager : MonoBehaviour {
     Text text;
+    GameObject player;
+    
     // Use this for initialization
     void Start () {
         text = GetComponent<Text>();
-        text.text = "Vidas: 5";
+        text.text = "Vidas: ";
+        player = GameObject.Find("Player");
     }
 	
 	// Update is called once per frame
 	void Update () {
-		// Mudanças nas vidas aqui
-	}
+        text.text = "Vidas: " + player.GetComponent<PlayerController>().vidas;
+    }
 }
