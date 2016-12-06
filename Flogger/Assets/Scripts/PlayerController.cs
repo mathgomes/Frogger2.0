@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour {
 	private Vector2 segue; // Vetor seguindo uma tartaruga ou tronco
 	private float tempoPulou;
 
+	public bool inverte = false; // Inverte os controle, se pegar o powerdown
+	public float timer;
+
 	// Começo da fase, pra voltar ao morrer
 	// Note que em qualquer lugar que ele Startar vira começo da fase,
 	// rolando usar em prefab
@@ -51,6 +54,7 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+		timer -= Time.deltaTime;
 		if (anterior == indoPara) {
 			var deltaX = 0;
 			var deltaY = 0;
@@ -69,10 +73,13 @@ public class PlayerController : MonoBehaviour {
 			}
 				
 			if (deltaX != 0 || deltaY != 0) {
-				indoPara = anterior + new Vector2 (deltaX, deltaY);
+				indoPara = anterior + (inverte ? -1 : 1) * new Vector2 (deltaX, deltaY);
 				tempoPulou = Time.time;
 				GetComponent<Animator> ().SetTrigger ("Pulou");
 			}
+		}
+		if (inverte && timer <= 0) {
+			inverte = false;
 		}
 		if (laser > 0 && Input.GetButtonDown ("Fire1")) {
 			Instantiate (laserPrefab, transform, false);
