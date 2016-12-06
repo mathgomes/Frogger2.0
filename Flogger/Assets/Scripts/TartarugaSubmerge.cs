@@ -6,7 +6,6 @@ using UnityEngine;
 public class TartarugaSubmerge : MonoBehaviour {
 	
 	private Animator anim;
-	private BoxCollider2D coll;
 
 	// Tempos dentro e fora d'água
 	public float tempoFora;
@@ -19,7 +18,6 @@ public class TartarugaSubmerge : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
-		coll = GetComponent<BoxCollider2D> ();
 		timer = 0;
 	}
 	
