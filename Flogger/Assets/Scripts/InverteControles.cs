@@ -7,7 +7,6 @@ public class InverteControles : MonoBehaviour, IPowerUp {
 	public float tempoAteCabar;
 
 	public void run (PlayerController player) {
-		player.inverte = true;
-		player.timer = tempoAteCabar;
+		player.InverteControles (tempoAteCabar);
 	}
 }
