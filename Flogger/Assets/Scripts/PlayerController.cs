@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 	const int ladoQuadrado = 1;
 	const int cenaGameOver = 5;
+
+    //
+    public GameObject score;
+    public GameObject lives;
 
     // Vidas, pontos, essas coisa
     public int vidas;
@@ -47,8 +52,11 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject[] HUD = new GameObject[3];
 
-	void Start () {
-		rb = GetComponent<Rigidbody2D> ();
+
+    void Start () {
+        lives = GameObject.Find("Lives");
+        score = GameObject.Find("Score");
+        rb = GetComponent<Rigidbody2D> ();
 		segue = Vector2.zero;
 		comecoDaFase = anterior = indoPara = rb.position;
         HUD[0] = GameObject.Find("Text");
@@ -153,7 +161,8 @@ public class PlayerController : MonoBehaviour {
 		// passou de fase! Parabéns =]
 		} else if (outro.gameObject.CompareTag ("FimDaFase")) {
 			pontos += 100;
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+            //DontDestroyOnLoad(transform.gameObject);
+            SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 		// esmaece o video do Flogger, pro player saber q q tacon teseno
 		} else if (outro.gameObject.CompareTag ("Video")) {
 			var renderers = outro.gameObject.GetComponentsInChildren<SpriteRenderer> ();
