@@ -7,6 +7,9 @@ public class Laser : MonoBehaviour {
 	public float distancia = 10;
 	public float tempo = 1;
 
+	// player, pra dar pontos pra ele =]
+	public PlayerController player;
+
 	void Start () {
 		var ps = GetComponent<ParticleSystem> ();
 		var main = ps.main;
@@ -21,6 +24,7 @@ public class Laser : MonoBehaviour {
 		print (hit.collider);
 		if (hit.collider != null && hit.collider.CompareTag ("Inimigo")) {
 			Destroy (hit.collider.gameObject);
+			player.pontos += 50;
 		}
 	}
 }

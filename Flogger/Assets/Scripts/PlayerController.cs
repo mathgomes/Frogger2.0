@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour {
 	const int ladoQuadrado = 1;
 	const int cenaGameOver = 5;
 
-    // Vidas
+    // Vidas, pontos, essas coisa
     public int vidas;
+	public int pontos;
 
 	// Velocidade do sapo, em unidades por segundo
 	public float velocidade = 2;
@@ -95,7 +96,8 @@ public class PlayerController : MonoBehaviour {
 			DesinverteControles ();
 		}
 		if (laser > 0 && Input.GetButtonDown ("Fire1")) {
-			Instantiate (laserPrefab, transform, false);
+			var laserObj = Instantiate (laserPrefab, transform, false);
+			laserObj.GetComponent<Laser> ().player = this;
 			laser--;
 		}
 	}
@@ -137,7 +139,7 @@ public class PlayerController : MonoBehaviour {
 		vidas--;
 		sobreRioAninhado = 0;
 		if (vidas <= 0) {
-            SceneManager.LoadScene(5);
+			SceneManager.LoadScene(cenaGameOver);
         }
 	}
 
@@ -148,8 +150,11 @@ public class PlayerController : MonoBehaviour {
 		} else if (outro.gameObject.CompareTag ("PowerUp")) {
 			outro.GetComponent<IPowerUp> ().run (this);
 			Destroy (outro.gameObject);
+		// passou de fase! Parabéns =]
 		} else if (outro.gameObject.CompareTag ("FimDaFase")) {
+			pontos += 100;
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+		// esmaece o video do Flogger, pro player saber q q tacon teseno
 		} else if (outro.gameObject.CompareTag ("Video")) {
 			var renderers = outro.gameObject.GetComponentsInChildren<SpriteRenderer> ();
 			foreach (var ren in renderers) {
