@@ -150,6 +150,12 @@ public class PlayerController : MonoBehaviour {
 			Destroy (outro.gameObject);
 		} else if (outro.gameObject.CompareTag ("FimDaFase")) {
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+		} else if (outro.gameObject.CompareTag ("Video")) {
+			var renderers = outro.gameObject.GetComponentsInChildren<SpriteRenderer> ();
+			foreach (var ren in renderers) {
+				ren.color = new Color (1, 1, 1, 0.5f);
+			}
+			print ("oie");
 		}
 	}
 
@@ -175,6 +181,12 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerExit2D (Collider2D outro) {
 		if (outro.gameObject.CompareTag ("SobreRio")) {
 			SobreRioMaisNao ();
+		} else if (outro.gameObject.CompareTag ("Video")) {
+			var renderers = outro.gameObject.GetComponentsInChildren<SpriteRenderer> ();
+			foreach (var ren in renderers) {
+				ren.color = new Color (1, 1, 1, 1);
+			}
+			print ("tchau");
 		}
 	}
 }
