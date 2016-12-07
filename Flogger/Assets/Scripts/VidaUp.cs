@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class VidaUp : MonoBehaviour, IPowerUp {
 	public void run (PlayerController player) {
-		player.vidas++;
+		PlayerInfoGlobal.vidas++;
 	}
 }

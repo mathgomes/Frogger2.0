@@ -12,10 +12,6 @@ public class PlayerController : MonoBehaviour {
     public GameObject score;
     public GameObject lives;
 
-    // Vidas, pontos, essas coisa
-    public int vidas;
-	public int pontos;
-
 	// Velocidade do sapo, em unidades por segundo
 	public float velocidade = 2;
 	public float velocidadeDelta = 0.5f;
@@ -51,7 +47,6 @@ public class PlayerController : MonoBehaviour {
 	public int laser = 0;
 
     public GameObject[] HUD = new GameObject[3];
-
 
     void Start () {
         lives = GameObject.Find("Lives");
@@ -104,8 +99,7 @@ public class PlayerController : MonoBehaviour {
 			DesinverteControles ();
 		}
 		if (laser > 0 && Input.GetButtonDown ("Fire1")) {
-			var laserObj = Instantiate (laserPrefab, transform, false);
-			laserObj.GetComponent<Laser> ().player = this;
+			Instantiate (laserPrefab, transform, false);
 			laser--;
 		}
 	}
@@ -144,9 +138,9 @@ public class PlayerController : MonoBehaviour {
 		transform.position = anterior = indoPara = comecoDaFase;
 		GetComponent<AudioSource> ().Play ();
 		video.GetComponent<VideoController> ().pedeSom ("morte");
-		vidas--;
+		PlayerInfoGlobal.vidas--;
 		sobreRioAninhado = 0;
-		if (vidas <= 0) {
+		if (PlayerInfoGlobal.vidas <= 0) {
 			SceneManager.LoadScene(cenaGameOver);
         }
 	}
@@ -160,8 +154,7 @@ public class PlayerController : MonoBehaviour {
 			Destroy (outro.gameObject);
 		// passou de fase! Parabéns =]
 		} else if (outro.gameObject.CompareTag ("FimDaFase")) {
-			pontos += 100;
-            //DontDestroyOnLoad(transform.gameObject);
+			PlayerInfoGlobal.pontos += 100;
             SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 		// esmaece o video do Flogger, pro player saber q q tacon teseno
 		} else if (outro.gameObject.CompareTag ("Video")) {

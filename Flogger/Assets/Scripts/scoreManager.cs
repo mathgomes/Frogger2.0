@@ -5,19 +5,17 @@ using UnityEngine.UI;
 
 public class scoreManager : MonoBehaviour {
     public Text text;
-    public GameObject player;
 
     // Use this for initialization
     void Start()
     {
         text = GetComponent<Text>();
         text.text = "Score: ";
-        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        text.text = "Score: " + player.GetComponent<PlayerController>().pontos;
+		text.text = "Score: " + PlayerInfoGlobal.pontos;
     }
 }

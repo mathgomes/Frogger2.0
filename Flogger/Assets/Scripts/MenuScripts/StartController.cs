@@ -8,6 +8,7 @@ public class StartController : MonoBehaviour {
     // Carrega a cena do jogo pelo indice apresentado na build
     public void LoadByIndex( int sceneIndex)
     {
+		PlayerInfoGlobal.ComecaJogo ();
         SceneManager.LoadScene(sceneIndex);
     }
 }

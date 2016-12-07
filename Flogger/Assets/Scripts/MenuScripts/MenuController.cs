@@ -11,9 +11,4 @@ public class MenuController : MonoBehaviour {
         source = GetComponent<AudioSource>();
         source.PlayOneShot(menuMusic);
     }
-	
-	// Update is called once per frame
-	void Update () {
-
-    }
 }
