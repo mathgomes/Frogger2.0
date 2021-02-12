@@ -67,19 +67,19 @@ public class PlayerController : MonoBehaviour {
 			var deltaY = 0;
 			Vector3 direcao = Vector3.zero;
 			var andou = false;
-			if (Input.GetKeyDown (KeyCode.UpArrow)) {
+			if (Input.GetAxis ("Vertical") > 0.1) {
 				deltaY = ladoQuadrado;
 				direcao = cima;
 				andou = true;
-			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+			} else if (Input.GetAxis ("Vertical") < -0.1) {
 				deltaY = -ladoQuadrado;
 				direcao = baixo;
 				andou = true;
-			} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+			} else if (Input.GetAxis ("Horizontal") < -0.1) {
 				deltaX = -ladoQuadrado;
 				direcao = esquerda;
 				andou = true;
-			} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
+			} else if (Input.GetAxis ("Horizontal") > 0.1) {
 				deltaX = ladoQuadrado;
 				direcao = direita;
 				andou = true;
