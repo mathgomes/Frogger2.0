@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class TimeManager : MonoBehaviour {
     public Text text;
     public float time;
+    public string format = "TEMPO: {0:00}:{1:00}";
 	// Use this for initialization
 	void Start () {
         text = GetComponent<Text>();
@@ -21,7 +22,7 @@ public class TimeManager : MonoBehaviour {
 
 
         //Faz update na label
-        text.text = string.Format("Tempo: {0:00} : {1:00}", minutes, seconds);
+        text.text = string.Format(format, minutes, seconds);
 
         if( time <= 0)
         {

@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class LivesManager : MonoBehaviour {
     public Text text;
+    public string format = "VIDAS: {0}";
 
     // Use this for initialization
     void Start () {
         text = GetComponent<Text>();
-		text.text = "Vidas: ";
     }
 	
 	// Update is called once per frame
 	void Update () {
-		text.text = "Vidas: " + PlayerInfoGlobal.vidas;
+		text.text = string.Format(format, PlayerInfoGlobal.vidas);
     }
 }
